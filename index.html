@@ -123,8 +123,16 @@ input,select,textarea,button{font-family:inherit}
 .kpi .val{font-family:'Inter';font-size:22px;font-weight:700;color:var(--white);letter-spacing:-.01em}
 .kpi .val .cur{font-size:13px;color:var(--gold-soft);font-weight:500;margin-right:2px}
 .kpi .sub{font-size:11px;color:var(--muted);margin-top:6px}
-.kpi.hero-kpi{background:linear-gradient(150deg,#26365c,#1a2540);border-color:var(--line)}
-.kpi.hero-kpi .val{color:var(--gold);font-size:23px}
+.kpi.hero-kpi{background:linear-gradient(150deg,#2a3c64,#1a2540);border:1.5px solid var(--gold);box-shadow:0 0 0 1px rgba(200,167,101,.15),0 16px 40px -20px rgba(200,167,101,.35)}
+.kpi.hero-kpi .nw-eyebrow{font-size:9.5px;letter-spacing:.22em;color:var(--gold);font-weight:700;font-family:'Inter';margin-bottom:4px}
+.kpi.hero-kpi .lbl{color:var(--cream);margin-bottom:8px}
+.kpi.hero-kpi .val{color:var(--gold);font-size:29px}
+.kpi.hero-kpi .sub{color:var(--gold-soft)}
+.field input[type=date]{color-scheme:dark}
+.child-row{display:grid;grid-template-columns:1.4fr 1fr auto;gap:12px;align-items:end;margin-bottom:12px}
+.child-row .rm{width:38px;height:42px;border-radius:11px;border:1px solid var(--line-soft);background:rgba(199,107,98,.08);color:var(--risk);cursor:pointer;font-size:16px;transition:.15s}
+.child-row .rm:hover{background:rgba(199,107,98,.2);border-color:var(--risk)}
+.age-hint{font-size:11px;color:var(--gold-soft);padding-bottom:12px;white-space:nowrap}
 .pos{color:var(--ok)!important}.neg{color:var(--risk)!important}
 
 /* ===== Balance ===== */
@@ -202,6 +210,35 @@ td.num,th.num{text-align:right;font-family:'Inter';font-variant-numeric:tabular-
 .mini label{font-size:11px;color:var(--muted)}
 .mini input{background:rgba(0,0,0,.28);border:1px solid var(--line-soft);border-radius:9px;padding:7px 9px;color:#fff;font-size:13px;text-align:right;font-family:'Inter'}
 .note{font-size:12px;color:var(--muted);background:rgba(255,255,255,.025);border-left:2px solid var(--gold);padding:11px 15px;border-radius:10px;margin-top:10px;line-height:1.65}
+.form-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:26px;padding-top:20px;border-top:1px solid var(--line-soft)}
+.form-nav .btn{padding:12px 24px;font-size:14px}
+.form-nav .step-dots{display:flex;gap:7px}
+.form-nav .step-dots i{width:8px;height:8px;border-radius:50%;background:rgba(213,205,183,.18)}
+.form-nav .step-dots i.on{background:var(--gold);width:22px;border-radius:99px}
+
+/* ===== Monthly ===== */
+.m-toggle{display:flex;align-items:center;gap:16px;background:rgba(200,167,101,.05);border:1px solid var(--line-soft);border-radius:var(--radius-sm);padding:16px 18px;margin-bottom:16px}
+.m-toggle-t{font-size:13.5px;color:var(--white);font-weight:500}
+.m-toggle-s{font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.5}
+.switch{position:relative;flex:0 0 auto;width:48px;height:27px;cursor:pointer}
+.switch input{opacity:0;width:0;height:0;position:absolute}
+.switch .track{position:absolute;inset:0;background:rgba(255,255,255,.12);border-radius:99px;transition:.2s}
+.switch .track::before{content:"";position:absolute;left:3px;top:3px;width:21px;height:21px;border-radius:50%;background:#fff;transition:.2s}
+.switch input:checked + .track{background:var(--gold)}
+.switch input:checked + .track::before{transform:translateX(21px)}
+.m-tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.m-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.m-chip{padding:9px 0;width:64px;text-align:center;border-radius:11px;border:1px solid var(--line-soft);background:rgba(0,0,0,.2);cursor:pointer;font-size:12.5px;color:var(--cream);transition:.15s;position:relative}
+.m-chip:hover{border-color:var(--gold-soft)}
+.m-chip.on{background:linear-gradient(160deg,rgba(200,167,101,.2),rgba(200,167,101,.05));border-color:var(--gold);color:var(--white);font-weight:600}
+.m-chip .net{display:block;font-size:9.5px;margin-top:3px;font-family:'Inter';color:var(--muted)}
+.m-chip.on .net{color:var(--gold-soft)}
+.m-chip .filled{position:absolute;top:6px;right:7px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.m-sel-h{font-size:14px;color:var(--gold);font-weight:600;margin-bottom:14px}
+.m-table table{min-width:680px}
+.m-table td.mn{color:var(--cream)}
+.m-table tr.cur td{background:rgba(200,167,101,.06)}
+.m-table tr.tot td{font-weight:700;color:var(--white);border-top:1px solid var(--line)}
 
 /* ===== Info tooltip ===== */
 .tip{position:relative;display:inline-flex;margin-left:6px;vertical-align:middle}
@@ -285,6 +322,7 @@ td.num,th.num{text-align:right;font-family:'Inter';font-variant-numeric:tabular-
     <div class="nav-label">กรอกข้อมูล</div>
     <div class="nav-item" data-page="income"><span class="ic">↑</span>รายได้</div>
     <div class="nav-item" data-page="expenses"><span class="ic">↓</span>ค่าใช้จ่าย</div>
+    <div class="nav-item" data-page="monthly"><span class="ic">▦</span>รายเดือน</div>
     <div class="nav-item" data-page="assets"><span class="ic">▣</span>สินทรัพย์</div>
     <div class="nav-item" data-page="debts"><span class="ic">▤</span>หนี้สิน</div>
     <div class="nav-item" data-page="goals"><span class="ic">✦</span>เป้าหมาย</div>
@@ -429,19 +467,62 @@ td.num,th.num{text-align:right;font-family:'Inter';font-variant-numeric:tabular-
 
       <!-- ============ INCOME ============ -->
       <section class="page" id="page-income">
-        <div class="card form-page"><div class="card-h"><h3>รายได้ · Income</h3><span class="eyebrow">กระแสเงินสดรับรวม</span></div><div id="form-income"></div></div>
+        <div class="card form-page"><div class="card-h"><h3>รายได้ · Income</h3><span class="eyebrow">ขั้นที่ 1 / 4</span></div><div id="form-income"></div>
+          <div class="form-nav">
+            <button class="btn ghost" onclick="goPage('dashboard')">← หน้าหลัก</button>
+            <div class="step-dots"><i class="on"></i><i></i><i></i><i></i></div>
+            <button class="btn gold" onclick="goPage('expenses')">ถัดไป: ค่าใช้จ่าย →</button>
+          </div></div>
       </section>
       <!-- ============ EXPENSES ============ -->
       <section class="page" id="page-expenses">
-        <div class="card form-page"><div class="card-h"><h3>ค่าใช้จ่าย · Expenses</h3><span class="eyebrow">กระแสเงินสดจ่ายรวม</span></div><div id="form-expenses"></div></div>
+        <div class="card form-page"><div class="card-h"><h3>ค่าใช้จ่าย · Expenses</h3><span class="eyebrow">ขั้นที่ 2 / 4</span></div><div id="form-expenses"></div>
+          <div class="form-nav">
+            <button class="btn ghost" onclick="goPage('income')">← ย้อนกลับ</button>
+            <div class="step-dots"><i></i><i class="on"></i><i></i><i></i></div>
+            <button class="btn gold" onclick="goPage('assets')">ถัดไป: สินทรัพย์ →</button>
+          </div></div>
       </section>
+      <!-- ============ MONTHLY ============ -->
+      <section class="page" id="page-monthly">
+        <div class="card">
+          <div class="card-h"><h3>วางแผนรายเดือน · Monthly Plan</h3><span class="eyebrow">ภาพรวมทั้งปี แยกรายเดือน</span></div>
+          <div class="m-toggle">
+            <label class="switch"><input type="checkbox" id="m-use" onchange="toggleMonthlyUse(this.checked)"><span class="track"></span></label>
+            <div><div class="m-toggle-t">ใช้ข้อมูลรายเดือนคำนวณสรุปรายปี (Dashboard)</div>
+            <div class="m-toggle-s">เปิด = รวม 12 เดือนกลายเป็นตัวเลขรายปีอัตโนมัติ · ปิด = ใช้หน้ารายได้/ค่าใช้จ่ายรายปีตามเดิม</div></div>
+          </div>
+          <div class="m-tools">
+            <button class="btn sm" onclick="fillFromAnnual()">↧ เริ่มจากยอดรายปี ÷ 12</button>
+            <button class="btn sm" onclick="copyMonthToAll()">⎘ คัดลอกเดือนนี้ไปทุกเดือน</button>
+            <button class="btn sm ghost" onclick="clearMonths()">○ ล้างรายเดือน</button>
+          </div>
+          <div class="m-chips" id="m-chips"></div>
+          <div id="m-inputs"></div>
+        </div>
+        <div class="section-title"><h2>สรุปกระแสเงินสดรายเดือน</h2><div class="ln"></div></div>
+        <div class="card"><div class="chart-box"><canvas id="ch-monthly"></canvas></div></div>
+        <div class="section-title"><h2>ตารางรายเดือน 12 เดือน</h2><div class="ln"></div></div>
+        <div class="card" style="overflow-x:auto"><div id="m-table"></div></div>
+      </section>
+
       <!-- ============ ASSETS ============ -->
       <section class="page" id="page-assets">
-        <div class="card form-page"><div class="card-h"><h3>สินทรัพย์ · Assets</h3><span class="eyebrow">มูลค่าปัจจุบัน</span></div><div id="form-assets"></div></div>
+        <div class="card form-page"><div class="card-h"><h3>สินทรัพย์ · Assets</h3><span class="eyebrow">ขั้นที่ 3 / 4</span></div><div id="form-assets"></div>
+          <div class="form-nav">
+            <button class="btn ghost" onclick="goPage('expenses')">← ย้อนกลับ</button>
+            <div class="step-dots"><i></i><i></i><i class="on"></i><i></i></div>
+            <button class="btn gold" onclick="goPage('debts')">ถัดไป: หนี้สิน →</button>
+          </div></div>
       </section>
       <!-- ============ DEBTS ============ -->
       <section class="page" id="page-debts">
-        <div class="card form-page"><div class="card-h"><h3>หนี้สิน · Debts</h3><span class="eyebrow">ยอดคงค้าง</span></div><div id="form-debts"></div></div>
+        <div class="card form-page"><div class="card-h"><h3>หนี้สิน · Debts</h3><span class="eyebrow">ขั้นที่ 4 / 4</span></div><div id="form-debts"></div>
+          <div class="form-nav">
+            <button class="btn ghost" onclick="goPage('assets')">← ย้อนกลับ</button>
+            <div class="step-dots"><i></i><i></i><i></i><i class="on"></i></div>
+            <button class="btn gold" onclick="goPage('dashboard')">เสร็จสิ้น · ดูผลลัพธ์ →</button>
+          </div></div>
       </section>
       <!-- ============ GOALS ============ -->
       <section class="page" id="page-goals">
@@ -463,8 +544,9 @@ td.num,th.num{text-align:right;font-family:'Inter';font-variant-numeric:tabular-
    ========================================================= */
 function sampleState(){
   return {
-    profile:{ name:"นายบริหาร", age:42, occupation:"รับจ้าง/ผู้บริหารฝ่าย", workplace:"บมจ.บริหาร", status:"สมรส",
-      spouseName:"นางแสนสุข", spouseAge:42, spouseOccupation:"แม่บ้าน", spouseWorkplace:"-", children:2, childrenAges:"4, 6 ปี",
+    profile:{ name:"นายบริหาร", birthdate:"1981-05-15", age:42, occupation:"รับจ้าง/ผู้บริหารฝ่าย", workplace:"บมจ.บริหาร", status:"สมรส",
+      spouseName:"นางแสนสุข", spouseBirthdate:"1981-08-20", spouseOccupation:"แม่บ้าน", spouseWorkplace:"-",
+      childrenList:[{name:"บุตรคนโต",birthdate:"2017-03-10"},{name:"บุตรคนเล็ก",birthdate:"2019-06-01"}],
       fatherName:"สำราญ", fatherAge:70, fatherHealth:"เบาหวาน", motherName:"สำเริง", motherAge:70, motherHealth:"ความดัน", planningYear:"2566" },
     goals:[
       {name:"การศึกษาบุตรคนโต — ปริญญาตรี (ไทย)", target:2000000, year:"2575", notes:""},
@@ -482,16 +564,47 @@ function sampleState(){
     },
     assets:{
       liquid:{ cash:200000, savingsAccount:500000, fixedDeposit:500000, coop:0, other:0 },
-      investment:{ bonds:0, preferred:0, common:2000000, mutual:0, rmfssf:0, tesg:0, providentFund:800000, retirement:0, insuranceCash:0, realEstate:0, other:0 },
-      personal:{ jewelry:0, home:6000000, car:800000, collectibles:0, other:0 }
+      investment:{ bond:0, fund:0, stock:2000000, gold:0, crypto:0, realEstate:0, pvd:800000, rmfssf:0, thaiesg:0, insuranceCash:0, other:0 },
+      personal:{ home:6000000, car:800000, jewelry:0, collectibles:0, other:0 }
     },
     debts:{
       shortTerm:{ utility:0, creditCard:0, shortLoan:0, other:0 },
       longTerm:{ autoLoan:0, mortgage:1200000, installment:0, other:0 },
       payments:{ mortgagePayment:240000, carPayment:144000, otherPayment:0 }
     },
+    monthly:{ useForYear:false, selected:new Date().getMonth(), months:emptyMonths() },
     updated:new Date().toISOString()
   };
+}
+function emptyMonths(){ return Array.from({length:12},()=>({income:0,savings:0,fixed:0,variable:0})); }
+function ensureMonthly(rec){
+  if(!rec.monthly||typeof rec.monthly!=='object') rec.monthly={useForYear:false,selected:new Date().getMonth(),months:emptyMonths()};
+  if(!Array.isArray(rec.monthly.months)||rec.monthly.months.length!==12) rec.monthly.months=emptyMonths();
+  rec.monthly.months=rec.monthly.months.map(m=>({income:n(m&&m.income),savings:n(m&&m.savings),fixed:n(m&&m.fixed),variable:n(m&&m.variable)}));
+  return rec.monthly;
+}
+const MONTHS=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+const MONTHS_FULL=['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
+function ageFromBD(bd){ if(!bd)return null; const d=new Date(bd); if(isNaN(d.getTime()))return null; const t=new Date(); let a=t.getFullYear()-d.getFullYear(); const m=t.getMonth()-d.getMonth(); if(m<0||(m===0&&t.getDate()<d.getDate()))a--; return (a>=0&&a<140)?a:null; }
+/* migrate old asset keys → new investment categories (idempotent) */
+function normalizeInvestment(inv){ inv=inv||{}; const v=k=>(+inv[k]||0); return {
+  bond:v('bond')+v('bonds'), fund:v('fund')+v('mutual'), stock:v('stock')+v('common')+v('preferred'),
+  gold:v('gold'), crypto:v('crypto'), realEstate:v('realEstate'),
+  pvd:v('pvd')+v('providentFund')+v('retirement'), rmfssf:v('rmfssf'), thaiesg:v('thaiesg')+v('tesg'),
+  insuranceCash:v('insuranceCash'), other:v('other') }; }
+function normalizePersonal(p){ p=p||{}; const v=k=>(+p[k]||0); return {home:v('home'),car:v('car'),jewelry:v('jewelry'),collectibles:v('collectibles'),other:v('other')}; }
+function ensureRec(rec){
+  if(!rec) return rec;
+  ensureMonthly(rec);
+  if(!rec.profile) rec.profile={};
+  if(!('birthdate' in rec.profile)) rec.profile.birthdate='';
+  if(!('spouseBirthdate' in rec.profile)) rec.profile.spouseBirthdate=(rec.profile.spouseBirthdate||'');
+  if(!Array.isArray(rec.profile.childrenList)){
+    const list=[]; const old=(rec.profile.childrenAges||'').toString().trim();
+    rec.profile.childrenList=list;
+  }
+  if(rec.assets){ rec.assets.investment=normalizeInvestment(rec.assets.investment); rec.assets.personal=normalizePersonal(rec.assets.personal); }
+  return rec;
 }
 function sampleYear2565(){
   const s=sampleState();
@@ -499,8 +612,8 @@ function sampleYear2565(){
   s.income.salaryMonthly=140000; s.income.bonusMonths=3;
   s.expenses.variable={food:228000,utilities:66000,phone:24000,transport:78000,parents:96000,travel:84000,clothes:54000,tax:0,children:48000,housekeeper:84000,other:0};
   s.assets.liquid={cash:150000,savingsAccount:400000,fixedDeposit:400000,coop:0,other:0};
-  s.assets.investment={bonds:0,preferred:0,common:1600000,mutual:0,rmfssf:0,tesg:0,providentFund:660000,retirement:0,insuranceCash:0,realEstate:0,other:0};
-  s.assets.personal={jewelry:0,home:6000000,car:900000,collectibles:0,other:0};
+  s.assets.investment={bond:0,fund:0,stock:1600000,gold:0,crypto:0,realEstate:0,pvd:660000,rmfssf:0,thaiesg:0,insuranceCash:0,other:0};
+  s.assets.personal={home:6000000,car:900000,jewelry:0,collectibles:0,other:0};
   s.debts.longTerm={autoLoan:0,mortgage:1350000,installment:0,other:0};
   s.debts.payments={mortgagePayment:240000,carPayment:144000,otherPayment:0};
   return s;
@@ -510,7 +623,7 @@ function sampleDB(){ return { meta:{activeYear:"2566", compareYear:"2565"}, year
 /* blank year for client self-entry */
 function blankYear(yearLabel){
   const s=sampleState();
-  s.profile={name:"",age:"",occupation:"",workplace:"",status:"",spouseName:"",spouseAge:"",spouseOccupation:"",spouseWorkplace:"",children:"",childrenAges:"",fatherName:"",fatherAge:"",fatherHealth:"",motherName:"",motherAge:"",motherHealth:"",planningYear:yearLabel||""};
+  s.profile={name:"",birthdate:"",age:"",occupation:"",workplace:"",status:"",spouseName:"",spouseBirthdate:"",spouseOccupation:"",spouseWorkplace:"",childrenList:[],fatherName:"",fatherAge:"",fatherHealth:"",motherName:"",motherAge:"",motherHealth:"",planningYear:yearLabel||""};
   s.goals=s.goals.map(()=>({name:"",target:0,year:"",notes:""}));
   s.income={salaryMonthly:0,salaryMonths:12,bonusMonths:0,increasePct:0,interest:0,dividend:0,rental:0,assetSale:0,other:0};
   s.pf={contributionPct:0,returnPct:0};
@@ -581,14 +694,27 @@ function hasData(c){ return (c.incomeTotal+c.expenseTotal+c.assetsTotal+c.debtTo
    ========================================================= */
 function compute(rec){
   const s=rec||state;
+  ensureRec(s);
   const salaryAnnual = n(s.income.salaryMonthly) * (n(s.income.salaryMonths) + n(s.income.bonusMonths));
-  const incomeTotal = salaryAnnual + n(s.income.interest)+n(s.income.dividend)+n(s.income.rental)+n(s.income.assetSale)+n(s.income.other);
-  const pfContribution = Math.round(n(s.income.salaryMonthly) * n(s.pf.contributionPct)/100 * 12);
-  const savingsOut = sum(s.expenses.savings);
-  const fixedManual = sum(s.expenses.fixed);
-  const fixed = fixedManual + pfContribution;
-  const variable = sum(s.expenses.variable);
-  const expenseTotal = savingsOut + fixed + variable;
+  const useMonthly = !!s.monthly.useForYear;
+  let incomeTotal, pfContribution, savingsOut, fixedManual, fixed, variable, expenseTotal;
+  if(useMonthly){
+    const M=s.monthly.months;
+    incomeTotal = M.reduce((a,b)=>a+n(b.income),0);
+    savingsOut  = M.reduce((a,b)=>a+n(b.savings),0);
+    fixed       = M.reduce((a,b)=>a+n(b.fixed),0);
+    variable    = M.reduce((a,b)=>a+n(b.variable),0);
+    fixedManual = fixed; pfContribution = 0;
+    expenseTotal = savingsOut + fixed + variable;
+  } else {
+    incomeTotal = salaryAnnual + n(s.income.interest)+n(s.income.dividend)+n(s.income.rental)+n(s.income.assetSale)+n(s.income.other);
+    pfContribution = Math.round(n(s.income.salaryMonthly) * n(s.pf.contributionPct)/100 * 12);
+    savingsOut = sum(s.expenses.savings);
+    fixedManual = sum(s.expenses.fixed);
+    fixed = fixedManual + pfContribution;
+    variable = sum(s.expenses.variable);
+    expenseTotal = savingsOut + fixed + variable;
+  }
   const netCashflow = incomeTotal - expenseTotal;
   const liquid = sum(s.assets.liquid), invest = sum(s.assets.investment), personal = sum(s.assets.personal);
   const assetsTotal = liquid+invest+personal;
@@ -602,23 +728,23 @@ function compute(rec){
   const debtService = incomeTotal>0 ? debtPayments/incomeTotal : 0;
   const savingRate  = incomeTotal>0 ? (savingsOut+netCashflow)/incomeTotal : 0;
   const investRatio = netWorth>0 ? invest/netWorth : 0;
-  const r1=scoreHigher(liquidity,3,6), r2=scoreLower(debtToAsset,.30,.50), r3=scoreLower(debtService,.30,.45),
-        r4=scoreHigher(savingRate,.10,.20), r5=scoreHigher(investRatio,.30,.50);
+  const r1=scoreBand(liquidity,3,6), r2=scoreLowerBinary(debtToAsset,.50), r3=scoreLowerBinary(debtService,.45),
+        r4=scoreHigherBinary(savingRate,.10), r5=scoreHigherBinary(investRatio,.50);
   const overall=Math.round((r1.score+r2.score+r3.score+r4.score+r5.score)/5);
-  return {salaryAnnual,incomeTotal,pfContribution,savingsOut,fixedManual,fixed,variable,expenseTotal,netCashflow,
+  return {useMonthly,salaryAnnual,incomeTotal,pfContribution,savingsOut,fixedManual,fixed,variable,expenseTotal,netCashflow,
     liquid,invest,personal,assetsTotal,shortTerm,longTerm,debtTotal,debtPayments,netWorth,
     liquidity,debtToAsset,debtService,savingRate,investRatio,r1,r2,r3,r4,r5,overall,overallStatus:statusOf(overall)};
 }
-function scoreHigher(v,redMax,greenMin){ let sc,st;
-  if(v>=greenMin){ sc=80+Math.min(20,(v-greenMin)/greenMin*20); st='ok'; }
-  else if(v>=redMax){ sc=50+(v-redMax)/(greenMin-redMax)*30; st='warn'; }
-  else { sc=Math.max(0,(v/redMax)*50); st='risk'; }
-  return {score:Math.round(sc),status:st}; }
-function scoreLower(v,greenMax,redMin){ let sc,st;
-  if(v<=greenMax){ sc=80+(greenMax-v)/greenMax*20; st='ok'; }
-  else if(v<=redMin){ sc=80-(v-greenMax)/(redMin-greenMax)*30; st='warn'; }
-  else { sc=Math.max(0,50-(v-redMin)/redMin*50); st='risk'; }
-  return {score:Math.round(Math.min(100,sc)),status:st}; }
+// higher-is-better, green at/above g (no auto-bonus beyond — staying green)
+function scoreHigherBinary(v,g){ if(v>=g) return {score:Math.min(100,Math.round(80+(v-g)/(g||1)*20)),status:'ok'}; return {score:Math.max(0,Math.round((v/(g||1))*60)),status:'risk'}; }
+// lower-is-better, green at/below g
+function scoreLowerBinary(v,g){ if(v<=g) return {score:Math.min(100,Math.round(80+(g-v)/(g||1)*20)),status:'ok'}; return {score:Math.max(0,Math.round(60-(v-g)/(g||1)*60)),status:'risk'}; }
+// band: optimal between lo–hi. below lo = risk(red), above hi = warn(เกินเกณฑ์ ไม่เขียว)
+function scoreBand(v,lo,hi){
+  if(v>=lo&&v<=hi){ const mid=(lo+hi)/2, half=(hi-lo)/2||1; return {score:Math.round(85+(1-Math.abs(v-mid)/half)*15),status:'ok'}; }
+  if(v<lo) return {score:Math.max(0,Math.round((v/(lo||1))*60)),status:'risk'};
+  return {score:Math.max(40,Math.round(78-(v-hi)/(hi||1)*30)),status:'warn'};
+}
 function statusOf(s){ return s>=70?'ok':s>=40?'warn':'risk'; }
 const STC={ok:'#74AE84',warn:'#D7AE5E',risk:'#C76B62'};
 const STLABEL={ok:'แข็งแรง',warn:'ควรปรับปรุง',risk:'มีความเสี่ยง'};
@@ -661,22 +787,22 @@ const SCH = {
       ['coop','เงินฝากสหกรณ์','เงินฝาก/หุ้นสหกรณ์ที่ถอนได้'],
       ['other','อื่นๆ','สินทรัพย์สภาพคล่องอื่นๆ']] },
     investment:{ title:'สินทรัพย์เพื่อการลงทุน', tag:'Investment', items:[
-      ['bonds','พันธบัตร/หุ้นกู้','มูลค่าพันธบัตร/หุ้นกู้ปัจจุบัน'],
-      ['preferred','หุ้นบุริมสิทธิ','มูลค่าหุ้นบุริมสิทธิปัจจุบัน'],
-      ['common','หุ้นสามัญ','มูลค่าหุ้นสามัญปัจจุบัน'],
-      ['mutual','กองทุนรวม','มูลค่ากองทุนรวมปัจจุบัน (ไม่รวม RMF/SSF)'],
-      ['rmfssf','RMF และ SSF','มูลค่ากองทุน RMF + SSF ที่ถืออยู่'],
-      ['tesg','TESG','มูลค่ากองทุน Thai ESG'],
-      ['providentFund','กองทุนสำรองเลี้ยงชีพ','มูลค่ากองทุนสำรองเลี้ยงชีพสะสมปัจจุบัน'],
-      ['retirement','เงินออมเพื่อวัยเกษียณ','เงินออมเพื่อเกษียณอื่นๆ เช่น กบข./บำนาญ'],
-      ['insuranceCash','มูลค่าเงินสดกรมธรรม์','มูลค่าเวนคืนกรมธรรม์ประกันชีวิต'],
+      ['bond','หุ้นกู้','มูลค่าหุ้นกู้/พันธบัตรปัจจุบัน'],
+      ['fund','กองทุน','มูลค่ากองทุนรวมปัจจุบัน (ไม่รวม RMF/SSF/Thai ESG)'],
+      ['stock','หุ้น','มูลค่าหุ้นที่ถืออยู่ปัจจุบัน'],
+      ['gold','ทองคำ','มูลค่าทองคำเพื่อการลงทุน'],
+      ['crypto','คริปโต','มูลค่าสินทรัพย์ดิจิทัล/คริปโตปัจจุบัน'],
       ['realEstate','อสังหาริมทรัพย์','อสังหาฯ เพื่อลงทุน/ปล่อยเช่า (ไม่ใช่บ้านที่อยู่อาศัย)'],
-      ['other','อื่นๆ','สินทรัพย์ลงทุนอื่น เช่น ทองคำ คริปโต']] },
-    personal:{ title:'สินทรัพย์ใช้ส่วนตัว', tag:'Personal', items:[
-      ['jewelry','เครื่องประดับ','มูลค่าเครื่องประดับ/ทอง/ของมีค่า'],
+      ['pvd','PVD · กองทุนสำรองเลี้ยงชีพ','มูลค่ากองทุนสำรองเลี้ยงชีพสะสมปัจจุบัน'],
+      ['rmfssf','RMF / SSF','มูลค่ากองทุน RMF + SSF ที่ถืออยู่'],
+      ['thaiesg','Thai ESG','มูลค่ากองทุน Thai ESG'],
+      ['insuranceCash','มูลค่าเงินสดกรมธรรม์','มูลค่าเวนคืนกรมธรรม์ประกันชีวิต'],
+      ['other','อื่นๆ','สินทรัพย์เพื่อการลงทุนอื่นๆ']] },
+    personal:{ title:'สินทรัพย์ใช้ส่วนตัว (ไม่ใช่เพื่อการลงทุน)', tag:'Personal', items:[
       ['home','บ้าน','มูลค่าบ้านที่อยู่อาศัยปัจจุบัน'],
       ['car','รถยนต์','มูลค่ารถยนต์ปัจจุบัน'],
-      ['collectibles','ของสะสมอื่นๆ','ของสะสมเพื่อใช้ส่วนตัว'],
+      ['jewelry','เครื่องประดับ','เครื่องประดับ/ของมีค่า (ใช้ส่วนตัว ไม่ใช่เพื่อลงทุน)'],
+      ['collectibles','ของสะสม','ของสะสมเพื่อใช้ส่วนตัว'],
       ['other','อื่นๆ','สินทรัพย์ใช้ส่วนตัวอื่นๆ']] }
   },
   debts:{
@@ -706,7 +832,7 @@ function moneyField(path,label,hint){
     <input type="text" inputmode="numeric" data-path="${path}" data-num="1" data-money="1" value="${v?fmt(v):''}" placeholder="0"></div>`;
 }
 function buildGroupedForm(containerId, root){
-  const groups=SCH[root]; let h='';
+  const groups=SCH[root]; let h=(root==='expenses')?monthlyBanner():'';
   for(const gk in groups){
     const g=groups[gk]; let fields='';
     g.items.forEach(([key,label,hint])=>fields+=moneyField(`${root}.${gk}.${key}`,label,hint));
@@ -729,6 +855,7 @@ function buildIncomeForm(){
   const fld=(path,label,hint)=>{const v=getByPath(state,path); return `<div class="field money"><label>${label}${tip(hint)}</label><input type="text" inputmode="numeric" data-path="${path}" data-num="1" data-money="1" value="${v?fmt(v):''}" placeholder="0"></div>`;};
   const plain=(path,label,hint)=>{const v=getByPath(state,path); return `<div class="field"><label>${label}${tip(hint)}</label><input type="text" inputmode="numeric" data-path="${path}" data-num="1" value="${v}"></div>`;};
   document.getElementById('form-income').innerHTML=`
+    ${monthlyBanner()}
     <div class="fgroup"><div class="fgroup-h">เงินเดือน &amp; โบนัส<span class="tag">Salary</span></div>
       <div class="field-grid">
         ${fld('income.salaryMonthly','เงินเดือน (ต่อเดือน)','เงินเดือนต่อเดือน ก่อนหักภาษี')}
@@ -750,15 +877,43 @@ function buildIncomeForm(){
     <div class="subtotal grand"><span>กระแสเงินสดรับรวม</span><b id="income-total">฿0</b></div>`;
 }
 function buildProfileForm(){
+  ensureRec(state); const p=state.profile;
   const f=(path,label,type='text')=>{const v=getByPath(state,path)??''; return `<div class="field"><label>${label}</label><input type="${type}" data-path="${path}" value="${v}"></div>`;};
+  const sa=ageFromBD(p.spouseBirthdate);
+  let kids='';
+  (p.childrenList||[]).forEach((c,i)=>{ const ca=ageFromBD(c.birthdate);
+    kids+=`<div class="child-row">
+      <div class="field"><label>ชื่อบุตรคนที่ ${i+1}</label><input type="text" data-path="profile.childrenList.${i}.name" value="${c.name||''}" placeholder="ชื่อบุตร"></div>
+      <div class="field"><label>วันเกิด <span class="age-hint" id="child-age-${i}">${ca!=null?'· อายุ '+ca+' ปี':''}</span></label><input type="date" value="${c.birthdate||''}" onchange="childDate(${i},this)"></div>
+      <button class="rm" title="ลบบุตรคนนี้" onclick="removeChild(${i})">✕</button>
+    </div>`; });
   document.getElementById('form-profile').innerHTML=`
     <div class="fgroup"><div class="fgroup-h">ผู้วางแผน<span class="tag">Client</span></div>
-      <div class="field-grid">${f('profile.name','ชื่อ')}${f('profile.age','อายุ','number')}${f('profile.occupation','อาชีพ')}${f('profile.workplace','ที่ทำงาน')}${f('profile.status','สถานภาพ')}${f('profile.planningYear','สำหรับรอบปี (พ.ศ.)')}</div></div>
-    <div class="fgroup"><div class="fgroup-h">คู่สมรส &amp; บุตร<span class="tag">Family</span></div>
-      <div class="field-grid">${f('profile.spouseName','ชื่อคู่สมรส')}${f('profile.spouseAge','อายุ','number')}${f('profile.spouseOccupation','อาชีพ')}${f('profile.spouseWorkplace','ที่ทำงาน')}${f('profile.children','จำนวนบุตร','number')}${f('profile.childrenAges','อายุบุตร')}</div></div>
+      <div class="field-grid">
+        ${f('profile.name','ชื่อ')}
+        <div class="field"><label>วันเกิด</label><input type="date" value="${p.birthdate||''}" onchange="selfBirth(this)"></div>
+        <div class="field"><label>อายุ <span class="age-hint">(คำนวณจากวันเกิด)</span></label><input type="number" id="age-self" data-path="profile.age" value="${p.age??''}"></div>
+        ${f('profile.occupation','อาชีพ')}${f('profile.workplace','ที่ทำงาน')}${f('profile.status','สถานภาพ')}
+        ${f('profile.planningYear','สำหรับรอบปี (พ.ศ.)')}
+      </div></div>
+    <div class="fgroup"><div class="fgroup-h">คู่สมรส<span class="tag">Spouse</span></div>
+      <div class="field-grid">
+        ${f('profile.spouseName','ชื่อคู่สมรส')}
+        <div class="field"><label>วันเกิด <span class="age-hint" id="spouse-age-hint">${sa!=null?'· อายุ '+sa+' ปี':''}</span></label><input type="date" value="${p.spouseBirthdate||''}" onchange="spouseBirth(this)"></div>
+        ${f('profile.spouseOccupation','อาชีพ')}${f('profile.spouseWorkplace','ที่ทำงาน')}
+      </div></div>
+    <div class="fgroup"><div class="fgroup-h">บุตร<span class="tag">Children</span></div>
+      ${kids||'<div style="font-size:12.5px;color:var(--muted);margin-bottom:14px">ยังไม่มีข้อมูลบุตร — กดปุ่มด้านล่างเพื่อเพิ่ม</div>'}
+      <button class="btn sm" onclick="addChild()">＋ เพิ่มบุตร</button>
+    </div>
     <div class="fgroup"><div class="fgroup-h">บิดา &amp; มารดา<span class="tag">Parents</span></div>
       <div class="field-grid">${f('profile.fatherName','ชื่อบิดา')}${f('profile.fatherAge','อายุ','number')}${f('profile.fatherHealth','สุขภาพ')}${f('profile.motherName','ชื่อมารดา')}${f('profile.motherAge','อายุ','number')}${f('profile.motherHealth','สุขภาพ')}</div></div>`;
 }
+function selfBirth(el){ state.profile.birthdate=el.value; const a=ageFromBD(el.value); if(a!=null){ state.profile.age=a; const ai=document.getElementById('age-self'); if(ai)ai.value=a; } save(); renderAll(false); }
+function spouseBirth(el){ state.profile.spouseBirthdate=el.value; const a=ageFromBD(el.value); const h=document.getElementById('spouse-age-hint'); if(h)h.textContent=a!=null?('· อายุ '+a+' ปี'):''; save(); }
+function childDate(i,el){ ensureRec(state); if(state.profile.childrenList[i]){ state.profile.childrenList[i].birthdate=el.value; const a=ageFromBD(el.value); const h=document.getElementById('child-age-'+i); if(h)h.textContent=a!=null?('· อายุ '+a+' ปี'):''; save(); } }
+function addChild(){ ensureRec(state); state.profile.childrenList.push({name:'',birthdate:''}); save(); buildForms(); goPage('profile'); }
+function removeChild(i){ ensureRec(state); state.profile.childrenList.splice(i,1); save(); buildForms(); goPage('profile'); }
 function buildGoalsForm(){
   let h='';
   state.goals.forEach((g,i)=>{
@@ -773,6 +928,7 @@ function buildGoalsForm(){
   document.getElementById('form-goals').innerHTML=h;
 }
 function buildForms(){
+  ensureRec(state);
   buildProfileForm(); buildGoalsForm(); buildIncomeForm();
   buildGroupedForm('form-expenses','expenses'); buildGroupedForm('form-assets','assets'); buildGroupedForm('form-debts','debts');
   bindInputs(); refreshSubtotals();
@@ -817,7 +973,7 @@ function renderAll(withCharts=true){
   }
   renderScore('score-card-2',c); renderRatioDetail(c);
   document.getElementById('reco-full').innerHTML=buildRecoHTML(c);
-  if(withCharts){ if(filled) renderCharts(c); renderCompare(); }
+  if(withCharts){ if(filled) renderCharts(c); renderCompare(); renderMonthly(); }
 }
 function renderScore(id,c){
   const el=document.getElementById(id); if(!el)return;
@@ -849,13 +1005,14 @@ function renderHeroSummary(c){
 }
 function renderKPI(c){
   const card=(lbl,val,cls='',sub='')=>`<div class="kpi ${cls}"><div class="lbl">${lbl}</div><div class="val">${typeof val==='string'?val:'<span class="cur">฿</span>'+fmt(val)}</div>${sub?`<div class="sub">${sub}</div>`:''}</div>`;
+  const nw=`<div class="kpi hero-kpi"><div class="nw-eyebrow">NET WORTH</div><div class="lbl">ความมั่งคั่งสุทธิ</div><div class="val"><span class="cur">฿</span>${fmt(c.netWorth)}</div><div class="sub">Assets − Debts (สินทรัพย์ − หนี้สิน)</div></div>`;
   document.getElementById('kpi-grid').innerHTML=
     card('รายได้รวมต่อปี',c.incomeTotal)+
     card('ค่าใช้จ่ายรวมต่อปี',c.expenseTotal)+
     card('กระแสเงินสดสุทธิ','<span class="cur">฿</span><span class="'+(c.netCashflow>=0?'pos':'neg')+'">'+fmt(c.netCashflow)+'</span>','',c.netCashflow>=0?'เงินออมเหลือสุทธิ':'รายจ่ายเกินรายได้')+
     card('สินทรัพย์รวม',c.assetsTotal)+
     card('หนี้สินรวม',c.debtTotal)+
-    card('ความมั่งคั่งสุทธิ',c.netWorth,'hero-kpi','Assets − Debts');
+    nw;
 }
 function renderBalance(c){
   document.getElementById('balance').innerHTML=`
@@ -864,7 +1021,7 @@ function renderBalance(c){
     <div class="bal-col n"><div class="k">ความมั่งคั่งสุทธิ</div><div class="v">${fmtB(c.netWorth)}</div></div>`;
 }
 const RATIO_DEFS=[
-  {key:'r1',name:'สภาพคล่อง (Liquidity)',unit:'เดือน',target:'เป้าหมาย 3–6 เดือนขึ้นไป',disp:c=>c.liquidity.toFixed(2),exp:c=>`สินทรัพย์สภาพคล่องครอบคลุมค่าใช้จ่ายได้ ${c.liquidity.toFixed(1)} เดือน`,prog:c=>Math.min(1,c.liquidity/9)},
+  {key:'r1',name:'สภาพคล่อง (Liquidity)',unit:'เดือน',target:'เป้าหมาย 3–6 เดือน (เกิน 6 = เงินจมมากไป)',disp:c=>c.liquidity.toFixed(2),exp:c=>`สินทรัพย์สภาพคล่องครอบคลุมค่าใช้จ่ายได้ ${c.liquidity.toFixed(1)} เดือน`,prog:c=>Math.min(1,c.liquidity/9)},
   {key:'r2',name:'หนี้สิน / สินทรัพย์',unit:'%',target:'เป้าหมาย < 50%',disp:c=>pct(c.debtToAsset),exp:c=>`มีภาระหนี้คิดเป็น ${pct(c.debtToAsset)} ของสินทรัพย์รวม`,prog:c=>Math.min(1,c.debtToAsset/.8)},
   {key:'r3',name:'ภาระชำระหนี้ / รายได้',unit:'%',target:'เป้าหมาย < 45%',disp:c=>pct(c.debtService),exp:c=>`ใช้รายได้ ${pct(c.debtService)} ไปกับการชำระหนี้รายงวด`,prog:c=>Math.min(1,c.debtService/.7)},
   {key:'r4',name:'ออม &amp; ลงทุน / รายได้',unit:'%',target:'เป้าหมาย > 10%',disp:c=>pct(c.savingRate),exp:c=>`ออมและลงทุนได้ ${pct(c.savingRate)} ของรายได้รวม`,prog:c=>Math.min(1,Math.max(0,c.savingRate))},
@@ -920,7 +1077,7 @@ function renderAssetLegend(c){
 }
 function recoMap(c){
   return {
-    r1:{status:c.r1.status,title:'เงินสำรองสภาพคล่อง',text:c.r1.status==='risk'?'เงินสำรองฉุกเฉินต่ำกว่าระดับที่แนะนำ ควรสะสมสินทรัพย์สภาพคล่องให้ครอบคลุมค่าใช้จ่าย 3–6 เดือน':c.r1.status==='warn'?'สภาพคล่องอยู่ในระดับพอใช้ ควรรักษาเงินสำรองให้ครอบคลุม 6 เดือนเพื่อความมั่นคง':'มีสภาพคล่องเพียงพอครอบคลุมค่าใช้จ่ายมากกว่า 6 เดือน อาจพิจารณานำเงินส่วนเกินไปลงทุนเพิ่มผลตอบแทน'},
+    r1:{status:c.r1.status,title:'เงินสำรองสภาพคล่อง',text:c.r1.status==='risk'?'เงินสำรองฉุกเฉินต่ำกว่า 3 เดือน ควรสะสมสินทรัพย์สภาพคล่องให้ครอบคลุมค่าใช้จ่าย 3–6 เดือน':c.r1.status==='warn'?'สภาพคล่องสูงเกิน 6 เดือน มีเงินจมมากเกินไป ควรแบ่งส่วนที่เกินไปลงทุนเพื่อเพิ่มผลตอบแทน':'สภาพคล่องอยู่ในเกณฑ์เหมาะสม (3–6 เดือน) กำลังพอดี'},
     r2:{status:c.r2.status,title:'ระดับหนี้สินต่อสินทรัพย์',text:c.r2.status==='risk'?'ระดับหนี้สูงเมื่อเทียบกับสินทรัพย์ ควรลดหนี้ก่อนเพิ่มความเสี่ยงในการลงทุน':c.r2.status==='warn'?'ระดับหนี้อยู่ในเกณฑ์ที่ต้องเฝ้าระวัง ควรควบคุมไม่ให้เกิน 50%':'ระดับหนี้สินอยู่ในเกณฑ์ที่ดี (น้อยกว่า 50% ของสินทรัพย์)'},
     r3:{status:c.r3.status,title:'ภาระผ่อนชำระหนี้',text:c.r3.status==='risk'?'ภาระผ่อนหนี้สูงเกินไปเมื่อเทียบกับรายได้ ควรพิจารณาปรับโครงสร้างหนี้หรือชะลอการก่อหนี้ใหม่':c.r3.status==='warn'?'ภาระผ่อนหนี้อยู่ในระดับที่ควรเฝ้าระวัง ควรคุมไม่ให้เกิน 45% ของรายได้':'ภาระผ่อนชำระหนี้อยู่ในเกณฑ์ดี (น้อยกว่า 45% ของรายได้)'},
     r4:{status:c.r4.status,title:'อัตราการออมและลงทุน',text:c.r4.status==='risk'?'อัตราการออมและลงทุนต่ำกว่าระดับที่แนะนำ ควรเพิ่มสัดส่วนการออม/ลงทุนอย่างค่อยเป็นค่อยไป':c.r4.status==='warn'?'อัตราการออมและลงทุนอยู่ในระดับพอใช้ ควรเพิ่มเป้าหมายให้เกิน 20% ของรายได้':'อัตราการออมและลงทุนแข็งแกร่ง เป็นรากฐานสำคัญของการสร้างความมั่งคั่ง'},
@@ -937,6 +1094,75 @@ function buildRecoHTML(c,limit){
   return h;
 }
 function renderReco(c){ document.getElementById('reco-mini').innerHTML=buildRecoHTML(c,3); }
+
+/* =========================================================
+   MONTHLY PLAN
+   ========================================================= */
+let monthSel=null;
+function monthlyBanner(){ return (state.monthly&&state.monthly.useForYear) ? `<div class="note" style="border-color:var(--gold);margin-bottom:18px">กำลังคำนวณ Dashboard จาก <b style="color:var(--gold)">ข้อมูลรายเดือน</b> — แก้ตัวเลขที่หน้า “รายเดือน” (ปิดสวิตช์เพื่อกลับมาใช้ค่ารายปีในหน้านี้)</div>` : ''; }
+function kShort(v){ const a=Math.abs(v); if(a>=1e6)return (v/1e6).toFixed(1)+'M'; if(a>=1e3)return Math.round(v/1e3)+'k'; return ''+Math.round(v); }
+function renderMonthly(){
+  ensureMonthly(state); const m=state.monthly;
+  if(monthSel==null||!m.months[monthSel]) monthSel=Math.min(11,Math.max(0,m.selected||0));
+  const useEl=document.getElementById('m-use'); if(useEl) useEl.checked=!!m.useForYear;
+  buildMonthChips(); buildMonthInputs(); updateMonthlySummary();
+}
+function buildMonthChips(){
+  const M=state.monthly.months;
+  const el=document.getElementById('m-chips'); if(!el)return;
+  el.innerHTML=M.map((mo,i)=>{ const net=n(mo.income)-(n(mo.savings)+n(mo.fixed)+n(mo.variable));
+    const filled=(n(mo.income)+n(mo.savings)+n(mo.fixed)+n(mo.variable))>0;
+    return `<div class="m-chip ${i===monthSel?'on':''}" onclick="selectMonth(${i})">${MONTHS[i]}${filled?'<span class="filled"></span>':''}<span class="net">${net?(net>0?'+':'')+kShort(net):'—'}</span></div>`; }).join('');
+}
+function buildMonthInputs(){
+  const el=document.getElementById('m-inputs'); if(!el)return;
+  const mo=state.monthly.months[monthSel];
+  const f=(key,label,hint)=>`<div class="field money"><label>${label}${tip(hint)}</label><input type="text" inputmode="numeric" value="${mo[key]?fmt(mo[key]):''}" placeholder="0" oninput="onMonthInput('${key}',this)" onblur="const v=state.monthly.months[monthSel]['${key}'];this.value=v?fmt(v):''" onfocus="const v=state.monthly.months[monthSel]['${key}'];this.value=v?String(v):''"></div>`;
+  const net=n(mo.income)-(n(mo.savings)+n(mo.fixed)+n(mo.variable));
+  el.innerHTML=`<div class="m-sel-h">เดือน ${MONTHS_FULL[monthSel]}</div>
+    <div class="field-grid">
+      ${f('income','รายรับเดือนนี้','รายได้รวมที่เข้ามาในเดือนนี้ (เงินเดือน + อื่นๆ)')}
+      ${f('savings','ออม / ลงทุน','เงินที่กันไปออม/ลงทุนในเดือนนี้')}
+      ${f('fixed','รายจ่ายคงที่','ผ่อนบ้าน/รถ เบี้ยประกัน ค่างวดประจำ')}
+      ${f('variable','รายจ่ายผันแปร','ค่ากิน อยู่ เดินทาง ใช้จ่ายทั่วไป')}
+    </div>
+    <div class="subtotal grand"><span>คงเหลือเดือน ${MONTHS_FULL[monthSel]}</span><b style="color:${net>=0?'var(--ok)':'var(--risk)'}">${fmtB(net)}</b></div>`;
+}
+function onMonthInput(key,el){
+  const c=el.value.replace(/[^0-9.]/g,''); state.monthly.months[monthSel][key]=c===''?0:parseFloat(c); save();
+  const mo=state.monthly.months[monthSel]; const net=n(mo.income)-(n(mo.savings)+n(mo.fixed)+n(mo.variable));
+  const sub=document.querySelector('#m-inputs .subtotal b'); if(sub){sub.textContent=fmtB(net); sub.style.color=net>=0?'var(--ok)':'var(--risk)';}
+  buildMonthChips(); updateMonthlySummary(); renderAll(false);
+}
+function selectMonth(i){ monthSel=i; state.monthly.selected=i; save(); buildMonthChips(); buildMonthInputs(); }
+function updateMonthlySummary(){
+  const tbl=document.getElementById('m-table'); if(!tbl)return;
+  const M=state.monthly.months; let run=0,ti=0,ts=0,tf=0,tv=0,rows='';
+  M.forEach((mo,i)=>{ const exp=n(mo.savings)+n(mo.fixed)+n(mo.variable),net=n(mo.income)-exp; run+=net; ti+=n(mo.income);ts+=n(mo.savings);tf+=n(mo.fixed);tv+=n(mo.variable);
+    rows+=`<tr class="${i===monthSel?'cur':''}"><td class="mn">${MONTHS_FULL[i]}</td><td class="num">${fmt(mo.income)}</td><td class="num">${fmt(mo.savings)}</td><td class="num">${fmt(mo.fixed)}</td><td class="num">${fmt(mo.variable)}</td><td class="num" style="color:${net>=0?'var(--ok)':'var(--risk)'}">${fmt(net)}</td><td class="num">${fmt(run)}</td></tr>`; });
+  const tnet=ti-(ts+tf+tv);
+  tbl.innerHTML=`<table><thead><tr><th>เดือน</th><th class="num">รายรับ</th><th class="num">ออม/ลงทุน</th><th class="num">คงที่</th><th class="num">ผันแปร</th><th class="num">คงเหลือ</th><th class="num">สะสม</th></tr></thead><tbody>${rows}<tr class="tot"><td>รวมทั้งปี</td><td class="num">${fmt(ti)}</td><td class="num">${fmt(ts)}</td><td class="num">${fmt(tf)}</td><td class="num">${fmt(tv)}</td><td class="num" style="color:${tnet>=0?'var(--ok)':'var(--risk)'}">${fmt(tnet)}</td><td class="num">${fmt(run)}</td></tr></tbody></table>`;
+  renderMonthlyChart();
+}
+function renderMonthlyChart(){
+  const ctx=document.getElementById('ch-monthly'); if(!ctx)return;
+  chartFontDefaults(); destroy('monthly');
+  const M=state.monthly.months; let run=0; const cum=M.map(mo=>{run+=n(mo.income)-(n(mo.savings)+n(mo.fixed)+n(mo.variable));return run;});
+  charts['monthly']=new Chart(ctx,{data:{labels:MONTHS,datasets:[
+    {type:'bar',label:'รายรับ',data:M.map(mo=>n(mo.income)),backgroundColor:'#C8A765',borderRadius:5,order:3},
+    {type:'bar',label:'รายจ่าย',data:M.map(mo=>n(mo.savings)+n(mo.fixed)+n(mo.variable)),backgroundColor:'#AF9E73',borderRadius:5,order:3},
+    {type:'line',label:'เงินสะสม',data:cum,borderColor:'#74AE84',backgroundColor:'transparent',tension:.3,borderWidth:2.5,pointRadius:3,order:1}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#D5CDB7',boxWidth:12,padding:16}},tooltip:{callbacks:{label:it=>` ${it.dataset.label}: ฿${fmt(it.raw)}`}}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(255,255,255,.05)'},ticks:{callback:v=>'฿'+(v/1e3).toFixed(0)+'k'}}}}});
+}
+function toggleMonthlyUse(on){ ensureMonthly(state); state.monthly.useForYear=!!on; save(); buildForms(); renderAll(true); }
+function fillFromAnnual(){
+  const prev=state.monthly.useForYear; state.monthly.useForYear=false; const a=compute(); state.monthly.useForYear=prev;
+  const per=x=>Math.round(x/12);
+  for(let i=0;i<12;i++) state.monthly.months[i]={income:per(a.incomeTotal),savings:per(a.savingsOut),fixed:per(a.fixed),variable:per(a.variable)};
+  save(); renderMonthly(); renderAll(false);
+}
+function copyMonthToAll(){ const src={...state.monthly.months[monthSel]}; for(let i=0;i<12;i++) state.monthly.months[i]={...src}; save(); renderMonthly(); renderAll(false); }
+function clearMonths(){ if(!confirm('ล้างข้อมูลรายเดือนทั้ง 12 เดือน?'))return; state.monthly.months=emptyMonths(); save(); renderMonthly(); renderAll(true); }
 
 /* =========================================================
    YEAR UI + COMPARISON
